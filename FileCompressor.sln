@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileCompressor.App", "FileCompressor.App\FileCompressor.App.csproj", "{CD90CA29-081A-45EE-BCE5-50BD64163048}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileCompressor.Core", "FileCompressor.Core\FileCompressor.Core.csproj", "{8D1E11CD-E634-41F2-9C28-53AA1D3C9700}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileCompressor.Infrastructure", "FileCompressor.Infrastructure\FileCompressor.Infrastructure.csproj", "{0846C773-6642-4711-B61B-BD3A4478ACA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileCompressor.Tests", "FileCompressor.Tests\FileCompressor.Tests.csproj", "{2447E6F8-CBC1-4417-A3A6-7CC02B03190C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CD90CA29-081A-45EE-BCE5-50BD64163048}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD90CA29-081A-45EE-BCE5-50BD64163048}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD90CA29-081A-45EE-BCE5-50BD64163048}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD90CA29-081A-45EE-BCE5-50BD64163048}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D1E11CD-E634-41F2-9C28-53AA1D3C9700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D1E11CD-E634-41F2-9C28-53AA1D3C9700}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D1E11CD-E634-41F2-9C28-53AA1D3C9700}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D1E11CD-E634-41F2-9C28-53AA1D3C9700}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0846C773-6642-4711-B61B-BD3A4478ACA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0846C773-6642-4711-B61B-BD3A4478ACA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0846C773-6642-4711-B61B-BD3A4478ACA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0846C773-6642-4711-B61B-BD3A4478ACA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2447E6F8-CBC1-4417-A3A6-7CC02B03190C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2447E6F8-CBC1-4417-A3A6-7CC02B03190C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2447E6F8-CBC1-4417-A3A6-7CC02B03190C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2447E6F8-CBC1-4417-A3A6-7CC02B03190C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,30 @@
+
+# .NET build output
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio / IDE
+.vs/
+.vscode/
+.idea/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build and test results
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# Logs
+*.log
+
+# Local secrets and license keys
+.env
+.env.*
+!.env.example
+sixlabors.lic
