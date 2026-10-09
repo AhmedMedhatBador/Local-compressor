@@ -18,6 +18,21 @@ public class CompressionResultTests
         Assert.True(result.SavedSpace);
     }
 
+
+
+[Fact]
+public void CompressionPercentage_ReturnsZero_WhenFileSizesAreEqual()
+{
+    var result = new CompressionResult
+    {
+        OriginalSize = 1000,
+        CompressedSize = 1000
+    };
+
+    Assert.Equal(0, result.CompressionPercentage);
+}
+
+
     [Fact]
     public void SavedSpace_ReturnsFalse_WhenCompressedFileIsLarger()
     {

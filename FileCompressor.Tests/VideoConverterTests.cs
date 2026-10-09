@@ -68,4 +68,51 @@ public async Task ConvertVideoToGifAsync_Throws_WhenInputFormatIsUnsupported()
             File.Delete(inputPath);
         }
     }
+
+
+
+[Theory]
+[InlineData(0)]
+[InlineData(-1)]
+[InlineData(61)]
+public async Task ConvertVideoToGifAsync_Throws_WhenFpsIsInvalid(
+    int fps)
+{
+    var inputPath = Path.Combine(
+        Path.GetTempPath(), $"{Guid.NewGuid()}.mp4");
+
+    await File.WriteAllTextAsync(inputPath, "test");
+
+    try
+    {
+        await Assert.ThrowsAsync<ArgumentOutOfRangeException>(
+            () => _converter.ConvertVideoToGifAsync(
+                inputPath, "output.gif", 320, fps));
+    }
+    finally
+    {
+        File.Delete(inputPath);
+    }
+}
+
+[Fact]
+public async Task ConvertVideoToGifAsync_Throws_WhenOutputIsNotGif()
+{
+    var inputPath = Path.Combine(
+        Path.GetTempPath(), $"{Guid.NewGuid()}.mp4");
+
+    await File.WriteAllTextAsync(inputPath, "test");
+
+    try
+    {
+        await Assert.ThrowsAsync<ArgumentException>(
+            () => _converter.ConvertVideoToGifAsync(
+                inputPath, "output.png"));
+    }
+    finally
+    {
+        File.Delete(inputPath);
+    }
+}
+
 }
