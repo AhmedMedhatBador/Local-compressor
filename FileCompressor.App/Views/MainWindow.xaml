@@ -37,6 +37,13 @@
                     Margin="0,10,0,0"
                     Command="{Binding CompressCommand}" />
 
+
+            <Button Content="Convert to GIF"
+        Width="150"
+        Height="40"
+        Margin="0,10,0,0"
+        Command="{Binding ConvertToGifCommand}" />
+
             <TextBlock Text="{Binding CompressionResult}"
                        Margin="0,15,0,0"
                        TextWrapping="Wrap" />
