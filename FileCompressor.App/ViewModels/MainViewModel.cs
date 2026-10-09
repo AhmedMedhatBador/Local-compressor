@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FileCompressor.App.Commands;
 using FileCompressor.Infrastructure.Compression;
 using FileCompressor.Core.Services;
+using FileCompressor.Core.Models;
 
 namespace FileCompressor.App.ViewModels;
 
@@ -90,8 +91,11 @@ public class MainViewModel : INotifyPropertyChanged
 
     private async Task CompressAsync()
     {
+
+
         if (string.IsNullOrEmpty(SelectedFilePath))
             return;
+            
 
         var outputExtension = Path.GetExtension(SelectedFilePath);
         var outputPath = _outputPathService.GetUniqueOutputPath(
@@ -108,17 +112,35 @@ public class MainViewModel : INotifyPropertyChanged
                 _ => 75
             };
 
-            var compressor = new ImageCompressor(quality);
+            var pngCompressionMode = SelectedCompressionMode switch
+{
+    "Maximum Quality" => PngCompressionMode.Fast,
+    "Balanced" => PngCompressionMode.Balanced,
+    "Maximum Compression" => PngCompressionMode.Maximum,
+    _ => PngCompressionMode.Balanced
+};
 
-            var result = await compressor.CompressAsync(
-                SelectedFilePath,
-                outputPath
-            );
+var compressor = new ImageCompressor(quality, pngCompressionMode);
 
-            CompressionResult =
-                $"Original: {result.OriginalSize / 1024.0:F2} KB\n" +
-                $"Compressed: {result.CompressedSize / 1024.0:F2} KB\n" +
-                $"Saved: {result.CompressionPercentage:F1}%";
+            var inputPath = SelectedFilePath;
+
+var result = await Task.Run(async () =>
+    await compressor.CompressAsync(inputPath, outputPath)
+);
+
+
+            var sizeChange = result.CompressionPercentage;
+
+var resultLabel = result.SavedSpace
+    ? $"Saved: {sizeChange:F1}%"
+    : result.CompressedSize == result.OriginalSize
+        ? "File size unchanged (0.0% saved)"
+        : $"File size increased by {Math.Abs(sizeChange):F1}%";
+
+CompressionResult =
+    $"Original: {result.OriginalSize / 1024.0:F2} KB\n" +
+    $"Compressed: {result.CompressedSize / 1024.0:F2} KB\n" +
+    resultLabel;
         }
         catch (Exception ex)
         {
