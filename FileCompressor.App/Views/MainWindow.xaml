@@ -7,51 +7,39 @@
 
     <Grid Margin="20">
         <StackPanel>
-
             <TextBlock Text="File Compressor"
-                    FontSize="28"
-                    FontWeight="Bold"
-                    Margin="0,0,0,20"/>
+                       FontSize="28"
+                       FontWeight="Bold"
+                       Margin="0,0,0,20" />
 
             <Button Content="Select Image"
                     Width="150"
                     Height="40"
                     Command="{Binding SelectFileCommand}" />
-       
-
 
             <TextBlock Text="{Binding SelectedFileName}"
                        Margin="0,15,0,5"
-                       TextWrapping="Wrap"/>
-               
-
-            <ComboBox x:Name="CompressionModeComboBox"
-                    Width="200"
-                    Height="35"
-                    Margin="0,10,0,10"
-                    SelectedIndex="1">
-                <ComboBoxItem Content="Maximum Quality"/>
-                <ComboBoxItem Content="Balanced"/>
-                <ComboBoxItem Content="Maximum Compression"/>
-            </ComboBox>
+                       TextWrapping="Wrap" />
 
             <ComboBox Width="200"
                       Height="35"
                       Margin="0,10,0,10"
-                      SelectedItem="{Binding SelectedCompressionMode}">
-                <ComboBoxItem Content="Maximum Quality"/>
-                <ComboBoxItem Content="Balanced"/>
-                <ComboBoxItem Content="Maximum Compression"/>
+                      SelectedValuePath="Content"
+                      SelectedValue="{Binding SelectedCompressionMode}">
+                <ComboBoxItem Content="Maximum Quality" />
+                <ComboBoxItem Content="Balanced" />
+                <ComboBoxItem Content="Maximum Compression" />
             </ComboBox>
-               
-               
+
+            <Button Content="Compress Image"
+                    Width="150"
+                    Height="40"
+                    Margin="0,10,0,0"
+                    Command="{Binding CompressCommand}" />
 
             <TextBlock Text="{Binding CompressionResult}"
                        Margin="0,15,0,0"
-                       TextWrapping="Wrap"/>
-               
-
+                       TextWrapping="Wrap" />
         </StackPanel>
     </Grid>
-
 </Window>

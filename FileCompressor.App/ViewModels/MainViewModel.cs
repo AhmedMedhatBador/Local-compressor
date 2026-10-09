@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using FileCompressor.App.Commands;
 using FileCompressor.Infrastructure.Compression;
+using FileCompressor.Core.Services;
 
 namespace FileCompressor.App.ViewModels;
 
@@ -13,9 +14,9 @@ public class MainViewModel : INotifyPropertyChanged
     private string _selectedFileName = "No image selected";
     private string? _selectedFilePath;
     private string _compressionResult = string.Empty;
-
     public RelayCommand SelectFileCommand { get; }
     public AsyncRelayCommand CompressCommand { get; }
+    private readonly OutputPathService _outputPathService = new();
 
     public MainViewModel()
     {
@@ -92,14 +93,22 @@ public class MainViewModel : INotifyPropertyChanged
         if (string.IsNullOrEmpty(SelectedFilePath))
             return;
 
-        var outputPath = Path.Combine(
-            Path.GetDirectoryName(SelectedFilePath)!,
-            Path.GetFileNameWithoutExtension(SelectedFilePath) + "_compressed.jpg"
-        );
+        var outputExtension = Path.GetExtension(SelectedFilePath);
+        var outputPath = _outputPathService.GetUniqueOutputPath(
+            SelectedFilePath,
+            outputExtension);
 
         try
         {
-            var compressor = new ImageCompressor(75);
+            var quality = SelectedCompressionMode switch
+            {
+                "Maximum Quality" => 95,
+                "Balanced" => 75,
+                "Maximum Compression" => 50,
+                _ => 75
+            };
+
+            var compressor = new ImageCompressor(quality);
 
             var result = await compressor.CompressAsync(
                 SelectedFilePath,
