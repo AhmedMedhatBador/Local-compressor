@@ -1,0 +1,17 @@
+FileCompressor (preview) bundles the following third-party software.
+
+FFmpeg 9.0.2 (ffmpeg.exe) - https://ffmpeg.org
+  Licensed under the GNU LGPL v2.1 or later. Built without GPL or nonfree
+  components, statically linked, with libdav1d (BSD 2-clause).
+  FFmpeg source: https://ffmpeg.org/download.html
+  Build configuration:
+  --enable-static --disable-shared --disable-everything --enable-small
+  --disable-gpl --disable-nonfree --enable-libdav1d (plus a minimal set of
+  decoders, demuxers, filters and the GIF/BMP encoders).
+  The LGPL v2.1 text: https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt
+
+SixLabors.ImageSharp - Six Labors Split License
+  https://sixlabors.com/pricing/ (free for open source use, commercial use
+  needs a license).
+
+FFMpegCore, XamlAnimatedGif - see their NuGet pages for license terms.
